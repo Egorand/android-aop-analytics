@@ -1,0 +1,68 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.neenbedankt.android-apt'
+apply plugin: 'me.tatarka.retrolambda'
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.uphyca.android-aspectj'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.2"
+
+    defaultConfig {
+        applicationId "me.egorand.cats"
+        minSdkVersion 16
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "me.egorand.cats.runner.CatsAppTestRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    packagingOptions {
+        exclude 'NOTICE'
+        exclude 'asm-license.txt'
+    }
+}
+
+final APPCOMPAT_VERSION = '23.1.1'
+final DAGGER_VERSION = '2.0.2'
+final ESPRESSO_VERSION = '2.2.1'
+final ESPRESSO_RUNNER_VERSION = '0.4'
+final MOCKITO_VERSION = '1.10.19'
+
+dependencies {
+    compile "com.android.support:appcompat-v7:${APPCOMPAT_VERSION}"
+    compile "com.android.support:recyclerview-v7:${APPCOMPAT_VERSION}"
+    compile "com.android.support:percent:${APPCOMPAT_VERSION}"
+    compile 'com.squareup.retrofit:retrofit:1.9.0'
+    compile 'io.reactivex:rxandroid:1.1.0'
+    compile "com.google.dagger:dagger:${DAGGER_VERSION}"
+    apt "com.google.dagger:dagger-compiler:${DAGGER_VERSION}"
+    provided 'org.glassfish:javax.annotation:10.0-b28'
+    compile 'com.github.bumptech.glide:glide:3.6.1'
+    compile 'de.greenrobot:eventbus:3.0.0-beta1'
+    compile 'com.google.android.gms:play-services-analytics:8.3.0'
+    compile 'org.aspectj:aspectjrt:1.8.7'
+
+    testCompile 'junit:junit:4.12'
+    testCompile "org.mockito:mockito-core:${MOCKITO_VERSION}"
+    testApt "com.google.dagger:dagger-compiler:${DAGGER_VERSION}"
+
+    androidTestCompile "com.android.support.test:runner:${ESPRESSO_RUNNER_VERSION}"
+    androidTestCompile "com.android.support.test:rules:${ESPRESSO_RUNNER_VERSION}"
+    androidTestCompile "com.android.support.test.espresso:espresso-core:${ESPRESSO_VERSION}"
+    androidTestCompile "com.android.support:support-annotations:${APPCOMPAT_VERSION}"
+    androidTestCompile 'com.squareup.assertj:assertj-android:1.1.1'
+    androidTestCompile "org.mockito:mockito-core:${MOCKITO_VERSION}"
+    androidTestCompile 'com.google.dexmaker:dexmaker-mockito:1.2'
+    androidTestApt "com.google.dagger:dagger-compiler:${DAGGER_VERSION}"
+}
