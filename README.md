@@ -1,6 +1,8 @@
 # android-aop-analytics
 
 Demo application that implements Google Analytics tracking in an aspect-oriented way using AspectJ.
+Check [Going aspect-oriented with AspectJ and Google Analytics]
+(http://blog.egorand.me/going-aspect-oriented-with-aspectj-and-google-analytics/)
 
 License
 -------
